@@ -1,5 +1,7 @@
 #' SSB import and create file by tabnumber and filetype
 #'
+#' @importFrom stringr str_c
+#' @importFrom utils write.csv
 #' @param tablenr A number, written as character string, referring to a SSB-table in SSBs statbank.
 #' @param filetype A character string, currently either "csv" or "RDS", which selects the type of file to be saved.
 #' @param size An integer which controls the number of Regions to be imported at once.

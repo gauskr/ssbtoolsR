@@ -1,3 +1,6 @@
+#' @importFrom stringr str_squish
+#' @importFrom rlang abort
+
 ssb_import_n_save_list_of_dfs_as_csv_internal <- function(tabnum_list = NULL, file = NULL) {
   if (is.null(tabnum_list) & is.null(file)) {
     rlang::abort("You need either:\nA character vector:\nssb_import_n_save_list_of_dfs_as_csv(c(\"04936\", \"04689\", \"06400\"))\nor a txt-file with numbers to be imported:\nssb_import_n_save_list_of_dfs_as_csv(file = \"myfile_w_tabnums.txt\")\nUse only one of the options.")
