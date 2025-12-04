@@ -1,7 +1,7 @@
 #' SSB makeurl
 #'
 #' @param tablenr A number (written as character string) referring to a SSB-table in SSBs statbank.
-#' @return
+#' @return A char vector of length one with the corresponding webadress (api) of the table.
 #' @export
 
 ssb_makeurl <- function(tablenr) {

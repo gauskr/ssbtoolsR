@@ -4,7 +4,7 @@
 #' @param filetype A character string, currently either "csv" or "RDS", which selects the type of file to be saved.
 #' @param size An integer which controls the number of Regions to be imported at once.
 #' @param sys_sleep An integer which controls how long the computer 'sleeps' before importing the next chunk of data.
-#' @return
+#' @return A file, either .csv or RDS, with the data from the table.
 #' @export
 
 

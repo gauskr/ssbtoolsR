@@ -1,7 +1,7 @@
 #' SSB metatibby
 #'
 #' @param tablenr A number (written as character string) referring to a SSB-table in SSBs statbank.
-#' @return
+#' @return A dataframe (tibble) sized 2 x k, with column 1 giving variable names, and column 2 giving a list column of additional metadata.
 #' @export
 
 

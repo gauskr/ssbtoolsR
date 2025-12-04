@@ -1,11 +1,8 @@
-bibentry(
-  bibtype  = "Article",
-  title    = ,
-  author   = ,
-  journal  = ,
-  year     = ,
-  volume   = ,
-  number   = ,
-  pages    = ,
-  doi      =
+citEntry(
+  entry = "Manual",
+  title = "ssbtoolsR: Tools for SSB Data Processing",
+  author = person("Gaute", "Skrove"),
+  year = "2025",
+  note = "R package version 0.0.0.9000",
+  url = "https://github.com/gauskr/ssbtoolsR"
 )
