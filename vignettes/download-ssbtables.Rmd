@@ -1,0 +1,75 @@
+---
+title: "download-ssbtables"
+author: "Gaute Skrove"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{download-ssbtables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ssbtoolsR)
+```
+
+The following script show how you can use ssbtoolsR-functions for downloading data from SSBs statbank. Me being somewhat lazy, I have some other functions as well, which automates updating already collected tables, let you just copy-paste a SSB topic-page and imports the ones you don't have, and more. Hopefully some of these can be added later. Anyhow, let's have a shot at it.
+
+Open or create a project in RStudio. The following functions works there, but might mis-behave outside of that mileau, or a similar IDE. I don't know, can't really judge how it will play out, and haven't tested it.
+
+Firstly, we assume that we are interested in the Norwegian sewage system. We go to [SSB's homepage](https://www.ssb.no/en/statbank/list/avlut), and see that table 11789 looks interesting. If we want to download the data we just run this code:
+
+```{r, eval=FALSE}
+d <- ssb_giga_pull("11789")
+```
+
+This downloads the entire table as a data.frame (actually, a tibble::tibble) and puts it into an object called 'd'. To see (some of) d just run this code:
+
+```{r, eval=FALSE}
+d
+```
+
+This data can now be manipulated and analyzed in R. But we are likely to want to save it in some format. 
+
+The R-user will know what to do, but non-R users might not. One way to save the data would be to just save the data frame in some format. For instance
+
+```{r, eval=FALSE}
+
+saveRDS(d, "nameoffile.RDS")
+```
+
+saves the data as a RDS-file. While
+
+```{r, eval=FALSE}
+
+write.csv(d, file = "nameoffile.csv")
+```
+
+saves the table as a csv-file. Other options might be added to the vignette, or I might drop it.
+
+A function, which is just a wrapper around ssb_giga_pull, does the downloading and saving as csv (default) or RDS in one step:
+
+```{r}
+#| eval: false
+
+ssb_import_n_create_file_by_tabnum("11789")
+
+```
+
+Now a file called ssb_11789.csv, containing the data, is saved in your workspace.
+
+Another wrapper generalizes this for lists of tablenumbers. F.i. assume we want to study older time series on the sewage system in Norwegian municipalities. Then we run the following code:
+
+```{r}
+#| eval: false
+
+ssb_import_n_save_list_of_dfs_as_csv(tabnum_list = c("03986", "05455", "05457","06403"))
+```
+
+This creates (and saves in workspace) four csv-files. ssb_03986.csv, ssb_05455.csv etc.

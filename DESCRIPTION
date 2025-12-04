@@ -1,9 +1,9 @@
 Package: ssbtoolsR
-Title: What the Package Does (One Line, Title Case)
+Title: Tools for working with SSB's statbank and microdata.no.
 Version: 0.0.0.9000
 Authors@R: 
     person("Gaute", "Skrove", , "gauskr@proton.me", role = c("aut", "cre"))
-Description: Functions which makes working with SSB/statbank and microdata.no easier.
+Description: This package is a work-in-progress collection of functions, which (I believe/hope) makes working with SSB/statbank and microdata.no easier (and faster). Please send me a mail if you find any bugs, or have suggestions for improvement.
 License: AGPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -18,4 +18,9 @@ Imports:
     stats,
     utils,
     PxWebApiData,
-    pxweb
+    pxweb,
+    purrr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

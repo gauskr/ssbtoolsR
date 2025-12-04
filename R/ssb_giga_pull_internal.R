@@ -1,6 +1,6 @@
 #' @importFrom dplyr mutate summarise group_by full_join select
 #' @importFrom purrr map_int
-#' @importFrom stringr str_c
+#' @importFrom stringr str_c str_remove
 #' @importFrom tibble tibble as_tibble
 #' @importFrom rlang parse_expr
 #' @importFrom PxWebApiData ApiData12
@@ -36,7 +36,7 @@ ssb_giga_pull_internal <- function(tabnr, size = 10, sys_sleep = 2) {
 
   for (i in 1:iterations) {
     body_clone <- body2
-    body_clone[splitvar] <- stringr::str_c(str_remove(body2[splitvar], "\\}\\}"), "[", iteration_nrs[i], "]}}")
+    body_clone[splitvar] <- stringr::str_c(stringr::str_remove(body2[splitvar], "\\}\\}"), "[", iteration_nrs[i], "]}}")
     code_chunk <- stringr::str_c(body_clone, collapse = ",\n")
     separate_code[i] <- stringr::str_c("PxWebApiData::ApiData12(url,\n", code_chunk, ")")
   }
