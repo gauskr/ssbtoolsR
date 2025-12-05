@@ -19,7 +19,17 @@
 #' @importFrom rlang parse_expr
 #' @importFrom PxWebApiData ApiData12
 
+.giga_pull_cited <- FALSE  # internal flag
+
 ssb_giga_pull_internal <- function(tabnr, size = 10, sys_sleep = 2) {
+
+    if (!.giga_pull_cited) {
+      packageStartupMessage(
+        "Reminder: Please cite Gaute Skrove (2025) and Langsrud & Bruusgaard (2025) when using this function.\n",
+        "citation('ssbtoolsR') and citation('PxWebApiData')"
+      )
+      .giga_pull_cited <<- TRUE
+    }
 
   pr_import <- size
   url <- ssb_makeurl(tabnr)
