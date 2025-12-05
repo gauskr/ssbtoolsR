@@ -37,7 +37,7 @@ You are warmly invited to:
 👉 Open an Issue here:  
 https://github.com/gauskr/ssbtoolsR/issues
 
-Or send an email: **username@proton.me**
+Or send an email: **gauskr@proton.me**
 
 ---
 
