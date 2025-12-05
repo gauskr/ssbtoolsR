@@ -1,5 +1,5 @@
 Package: ssbtoolsR
-Title: Tools for working with SSB's statbank and microdata.no.
+Title: Tools for working with SSB's statbank and microdata.no
 Version: 0.0.0.9000
 Authors@R: 
     person("Gaute", "Skrove", , "gauskr@proton.me", role = c("aut", "cre"))
