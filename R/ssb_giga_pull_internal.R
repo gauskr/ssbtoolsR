@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Gaute Skrove
+# Copyright (C) 2025 Gaute Skrove gauskr@proton.me
 # This file is part of the ssbtoolsR package.
 # ssbtoolsR is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -9,6 +9,8 @@
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU Affero General Public License for more details.
+# See LICENSE.md in the package root for full license text.
+
 
 #' @importFrom dplyr mutate summarise group_by full_join select
 #' @importFrom purrr map_int
