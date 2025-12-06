@@ -19,18 +19,21 @@
 #' @importFrom rlang parse_expr
 #' @importFrom PxWebApiData ApiData12
 
-.giga_pull_cited <- FALSE  # internal flag
-
 ssb_giga_pull_internal <- function(tabnr, size = 10, sys_sleep = 2) {
 
-    if (!.giga_pull_cited) {
-      packageStartupMessage(
-        "Reminder: Please cite Gaute Skrove (2025) and Langsrud & Bruusgaard (2025) when using this function.\n",
-        "citation('ssbtoolsR') and citation('PxWebApiData')"
-      )
-      .giga_pull_cited <<- TRUE
-    }
+  # show a reminder only the first time the function is called in the session
+  if (is.null(.ssbtoolsR_env$giga_pull_internal_cited) ||
+      !.ssbtoolsR_env$giga_pull_internal_cited) {
 
+    packageStartupMessage(
+      "Heads-up: ssb_giga_pull_internal wraps functions from PxWebApiData.\n",
+      "Please cite both Gaute Skrove (2025) and Langsrud & Bruusgaard (2025) if you use this workflow.\n",
+      "Use citation('ssbtoolsR') and citation('PxWebApiData') for BibTeX or citation details."
+    )
+
+    # mark as shown
+    .ssbtoolsR_env$giga_pull_internal_cited <- TRUE
+  }
   pr_import <- size
   url <- ssb_makeurl(tabnr)
   tibtable <- ssb_metatibby(tabnr)
