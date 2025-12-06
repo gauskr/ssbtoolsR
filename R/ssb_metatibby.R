@@ -23,9 +23,9 @@
 
 
 ssb_metatibby <- function(tablenr) {
-  url <- str_c("https://data.ssb.no/api/v0/en/table/", tablenr, "/", collapse = "")
-  metalist <- ApiData(url, returnMetaFrames = TRUE)
-  metatibby <- tibble(names = vector("character", length(metalist)),
+  url <- stringr::str_c("https://data.ssb.no/api/v0/en/table/", tablenr, "/", collapse = "")
+  metalist <- PxWebApiData::ApiData(url, returnMetaFrames = TRUE)
+  metatibby <- tibble::tibble(names = vector("character", length(metalist)),
                       values = vector("list", length(metalist)))
 
   for (i in seq_along(metalist)) {
