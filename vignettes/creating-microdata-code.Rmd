@@ -25,14 +25,14 @@ The following example walks us through how we can achieve this with ssb_mdscript
 Assume our data with indicators on municipality level gender equality are stored as a csv.
 
 ```{r}
-load("ssb_09292")
+data("ssb_09292", package = "ssbtoolsR")
 head(ssb_09292)
 ```
 
 This table is not yet in a workable form. This can be handled numerous ways. As of 2025, many users of ssb-data, and microdata.no, will not be fluent in R-language. To quickly handle most cleaning-tasks - at least with data from ssb.no/statbank, ssbtoolsR offer a rather cozy function called ssb_clean_df:
 
 ```{r}
-ssb_clean_df(d)
+ssb_clean_df(ssb_09292)
 ```
 
 Without additional arguments, the function simply return an overview of the file. We first study which variables to include, and refer to the variables by column-number:

@@ -13,6 +13,8 @@
 
 #' SSB overview
 #'
+#' @importFrom stringr str_c
+#' @importFrom purrr map_chr
 #' @param df A dataframe.
 #' @return Prints an overview of what's inside a dataset. Variables with 100 or more unique values just return the number of unique values.
 #' @export
@@ -20,6 +22,18 @@
 
 ssb_overview <- function(df) {
   a <- lapply(df, function(x) length(unique(x)))
-  print(a[unlist(a) > 99])
+  large_unique <- unlist(a) > 99
+  dfnames <- names(df[large_unique])
+  pull_some_content <- function(x) {
+    x <- x[1:10]
+    x <- stringr::str_c(x, collapse = ", ")
+    x
+  }
+  some_content <- purrr::map_chr(df[large_unique], pull_some_content)
+  length_unique <- a[unlist(a) > 99]
+  col_id <- (1:length(names(df)))
+  large_colid <- col_id[large_unique]
+  to_print <- stringr::str_c("Column: ", large_colid, ", Variable name: ", dfnames, "\nN. unique values = ", length_unique, "\nhead = ", some_content, sep = "")
+  cat(to_print, sep="\n\n")
   lapply(df[unlist(a) < 100], unique)
 }

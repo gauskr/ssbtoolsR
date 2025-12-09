@@ -21,7 +21,11 @@
 ssb_clean_df <- function(df, include = NULL) {
   if (is.null(include)) {
     message("Select the columns you want to include, and add an include-argument to your function call:\nssb_clean_df(df, include = c(3,5,6)")
-    message(names(df))
+    names_df <- names(df)
+    columnvec <- (1:length(names_df))
+    messagechr <- stringr::str_c(columnvec, " = ", names_df, collapse = ", ")
+    messagechr <- stringr::str_c("Columns:", messagechr, sep = " ")
+    message(messagechr)
     ssb_overview(df)
   }
 }
