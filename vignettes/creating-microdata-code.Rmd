@@ -1,0 +1,60 @@
+---
+title: "creating-microdata-code"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{creating-microdata-code}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ssbtoolsR)
+```
+
+It's useful to be able to quickly transform dataframes with f.i. municipality codes and years into microdata-code. In microdata, recode works with numerical data, while replace works with any data, including strings.
+
+The following example walks us through how we can achieve this with ssb_mdscript_replace and ssb_mdscript_recode.
+
+Assume our data with indicators on municipality level gender equality are stored as a csv.
+
+```{r}
+d <- read.csv("ssb_09292.csv")
+tibble::tibble(d)
+```
+
+This table is not yet in a workable form. This can be handled numerous ways. As of 2025, many users of ssb-data, and microdata.no, will not be fluent in R-language. To quickly handle most cleaning-tasks - at least with data from ssb.no/statbank, ssbtoolsR offer a rather cozy function called ssb_clean_df:
+
+```{r}
+ssb_clean_df(d)
+```
+
+Without additional arguments, the function simply return an overview of the file. We first study which variables to include, and refer to the variables by column-number:
+
+```{r}
+ssb_clean_df(d, include = c(1,1,1,1))
+```
+
+We then note which variables need definition and adds a definition-vec:
+
+```{r}
+ssb_clean_df(d, include = c(1,1,1,1), idvars = c(1,3), definition = list(1 = "sdsdf", 2 = c("dfdfgd", "dfgdgdfg")))
+```
+
+The function notify us that we now have a clean dataframe, so we make sure we retain it:
+
+```{r}
+d <- ssb_clean_df(d, include = c(1,1,1,1), idvars = c(1,3), definition = list(1 = "sdsdf", 2 = c("dfdfgd", "dfgdgdfg")))
+```
+
+Data can be manipulated in any way you want, including using stata, xlsx or whatever. Just store it in a practical format, and re-import it into R. However 
+
+Let's first consider the case where we want to create municipal-level values for gender equality.
+
+
