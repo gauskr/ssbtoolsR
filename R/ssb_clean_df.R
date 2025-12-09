@@ -27,5 +27,7 @@ ssb_clean_df <- function(df, include = NULL) {
     messagechr <- stringr::str_c("Columns:", messagechr, sep = " ")
     message(messagechr)
     ssb_overview(df)
+  } else {
+    df <- df[include]
   }
 }
